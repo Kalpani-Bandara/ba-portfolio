@@ -26,6 +26,48 @@ Which regions, products and discount levels drive profit, and where is the compa
 - `Excel/Superstore_Analysis.xlsx`: cleaned data, pivots, dashboard
 - `Excel/excel_dashboard.png`: dashboard screenshot
 
+## Project 2: SQL Analysis
+
+### Business problem
+Use SQL to answer the same business questions as the Excel project from a proper database: where does the company make money, which customers and products lose it, and what should management change?
+
+![SQL result: profit by discount band](SQL/sql_discount_result.png)
+
+### What I did
+- Loaded the cleaned CSV (9,993 rows) into MySQL with a bulk load and checked the totals against the Excel pivot (sales $2,296,919, profit $286,409)
+- Split the data into three tables: `customers` (793), `products` (1,862) and `orders` (9,993), linked by foreign keys
+- Converted text dates into real dates and restored 5-digit ZIP codes
+- Found a data quality issue: 32 product IDs had two name variants, so one name per ID is kept
+- Wrote 10 queries, each with a comment stating the business question
+
+### Queries (`SQL/queries.sql`)
+| # | Business question | SQL concept |
+|---|---|---|
+| 1 | Sales and margin by region | GROUP BY |
+| 2 | Monthly sales and profit trend | Date functions |
+| 3 | Top 10 customers and their profit | JOIN |
+| 4 | Top 10 loss-making products | JOIN + HAVING |
+| 5 | Sub-categories below average margin | Subquery |
+| 6 | Profit by discount band | CASE |
+| 7 | Top 10 states by sales and profit | GROUP BY |
+| 8 | Days to ship by shipping mode | DATEDIFF |
+| 9 | Year-over-year sales growth | CTE + LAG |
+| 10 | Value of each customer segment | JOIN + aggregates |
+
+### Key findings
+1. Revenue grew 29.3% in 2013 and 20.6% in 2014, after a small dip of 2.8% in 2012.
+2. The #1 customer by sales (Sean Miller, about $25K) generated a loss of about $2K.
+3. Discounts above 40% have a margin of -77.4%. No discount earns +29.5%.
+4. Texas is the third-biggest state by sales ($170K) but loses about $25.7K.
+5. Six sub-categories earn below the company average margin, and three of them (Tables, Bookcases, Supplies) lose money.
+
+### Files
+- `SQL/setup.sql`: how the database and tables were built
+- `SQL/queries.sql`: the 10 business queries
+- `SQL/superstore_clean.csv`: cleaned data used for the load
+
 ## Coming next
-- Project 2: SQL
+- Project 3: Power BI
+
+## Coming next
 - Project 3: Power BI
