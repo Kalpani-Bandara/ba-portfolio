@@ -9,6 +9,8 @@ Dataset: Superstore Sales (9,994 order lines, 2011 to 2014, US retailer).
 ### Business problem
 Which regions, products and discount levels drive profit, and where is the company losing money?
 
+![Excel dashboard](Excel/excel_dashboard.png)
+
 ### What I did
 - Converted the data into an Excel Table and removed 1 duplicate row (9,993 rows left)
 - Checked for blanks (none) and added Order Year and Order Month columns
@@ -65,9 +67,6 @@ Use SQL to answer the same business questions as the Excel project from a proper
 - `SQL/setup.sql`: how the database and tables were built
 - `SQL/queries.sql`: the 10 business queries
 - `SQL/superstore_clean.csv`: cleaned data used for the load
-
-## Coming next
-- Project 3: Power BI
 
 ## Coming next
 - Project 3: Power BI
