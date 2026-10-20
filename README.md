@@ -68,5 +68,42 @@ Use SQL to answer the same business questions as the Excel project from a proper
 - `SQL/queries.sql`: the 10 business queries
 - `SQL/superstore_clean.csv`: cleaned data used for the load
 
-## Coming next
-- Project 3: Power BI
+## Project 3: Power BI Dashboard
+
+### Business problem
+Give managers an interactive dashboard so they can explore sales, profit and discounts themselves, without asking an analyst.
+
+![Power BI overview page](PowerBI/powerbi_overview.png)
+
+### What I did
+- Imported the cleaned Excel table and checked data quality in Power Query (100% valid)
+- Built a star-schema model: one `Sales` table linked to `Customers`, `Products` and a `Calendar` table
+- Wrote 4 DAX measures: Total Sales, Total Profit, Profit Margin % and Sales YoY %
+- Built 3 report pages with Year and Region slicers, and red highlighting for loss-making states
+- Added an insights box with 3 findings and a recommendation
+
+### Pages
+| Page | Question it answers |
+|---|---|
+| Overview | How big is the business, and where is the money made or lost? |
+| Products & Regions | What sells best, and which big states lose money? |
+| Trends & Discounts | Is growth healthy, and do discounts hurt profit? |
+
+![Products and regions page](PowerBI/powerbi_products.png)
+![Trends and discounts page](PowerBI/powerbi_trends.png)
+
+### Key findings
+1. Total sales are $2.30M with $286K profit (12.5% margin), and all totals match the Excel and SQL results.
+2. West is the top region ($725K), and the Canon imageCLASS 2200 copier is the top product ($61.6K).
+3. Tables, Bookcases and Supplies lose money, and Texas (3rd biggest state) loses about $25.7K.
+4. Discounts of 30% or more lose money overall. Sales grew 29.3% in 2013 and 20.6% in 2014.
+
+### Recommendation
+Cap discounts at 20% and review the pricing of Tables and Bookcases first.
+
+### Files
+- `PowerBI/Superstore_Dashboard.pbix`: the dashboard (open with Power BI Desktop)
+- `PowerBI/powerbi_*.png`: page screenshots
+
+## One dataset, three tools
+Excel found the problems, SQL confirmed them with a proper database, and Power BI turned them into an interactive dashboard. All three give the same totals ($2,296,919 sales, $286,409 profit).
